@@ -8,11 +8,11 @@
 
 var socketio = require("socket.io")();
 
-//Listen on port 3636
-var io = socketio.listen(8080);
+//Listen on port 80
+var io = socketio.listen(80);
 var users = [];
 var userSock = [];
-console.log("Server started on port 8080");
+console.log("Server started on port 80");
 
 io.on('connection', function(socket) {
 	var clientIpAddress = socket.request.headers['x-forwarded-for'] || socket.request.connection.remoteAddress;
