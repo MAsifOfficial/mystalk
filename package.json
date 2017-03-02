@@ -1,0 +1,12 @@
+{
+	"name": "Mystalk",
+	"version": "1.0.0",
+	"description": "CLI chat",
+	"author": "Muhammad Asif",
+	"dependencies": {
+		"socket.io": "latest",
+		"socket.io-client": "latest",
+		"ansi-color": "latest"
+	},
+	"private": true
+}
