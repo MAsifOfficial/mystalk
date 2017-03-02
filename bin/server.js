@@ -8,11 +8,11 @@
 
 var socketio = require("socket.io")();
 
-//Listen on port 80
-var io = socketio.listen(80);
+//Listen on port 8080
+var io = socketio.listen(8080);
 var users = [];
 var userSock = [];
-console.log("Server started on port 80");
+console.log("Server started on port 8080");
 
 io.on('connection', function(socket) {
 	var clientIpAddress = socket.request.headers['x-forwarded-for'] || socket.request.connection.remoteAddress;
@@ -47,13 +47,11 @@ io.on('connection', function(socket) {
 
 	socket.on('disconnect', function() {
 		var i = userSock.indexOf(socket);
-		console.log(i);
 		var nick = users[i];
-		console.log(nick);
 		data = {message: nick + " has disconnected"};
 		io.sockets.emit('notice', data);
-		userSock.pop(i);
-		users.pop(i);
+		userSock.slice(i,1);
+		users.slice(i,1);
 		console.log(data);
 	});
 });
