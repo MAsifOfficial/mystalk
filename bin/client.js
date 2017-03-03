@@ -25,6 +25,7 @@ rl.question("Please enter a nickname: ", function(name) {
 	var nick = name.toLowerCase();
 	socket.emit('join', nick);
 });
+
 socket.on('joining', function(data) {
 	console.log(color(data.message, "green"));
 	if(!data.joined){
